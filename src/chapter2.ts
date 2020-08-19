@@ -11,3 +11,6 @@ const growApples = (growthFactor: number) => {
 }
 
 let d = growApples(4)
+
+// Module vs script behaviour
+export {}
