@@ -17,7 +17,7 @@ type Reserve = {
     (destination: string): Reservation
 }
 
-let Reserve: Reserve = (fromOrDestination: Date | string, toOrDestination?: Date | string, destination?: string): Reservation => {
+const Reserve: Reserve = (fromOrDestination: Date | string, toOrDestination?: Date | string, destination?: string): Reservation => {
     if (typeof fromOrDestination === "string") {
         return {
             type: "evac"
