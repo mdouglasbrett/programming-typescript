@@ -48,18 +48,31 @@ const Reserve: Reserve = (
 
 // Explicitly set the order of the rest array
 function call<T extends [unknown, string, ...unknown[]], R>(
-    f: (...args: T) => R,
-    ...args: T
+  f: (...args: T) => R,
+  ...args: T
 ): R {
   return f(...args);
 }
 
 function fill(length: number, value: string): string[] {
-    return Array.from({length}, () => value)
+  return Array.from({ length }, () => value);
 }
 
-call(fill, 10, "string")
+call(fill, 10, "string");
 // Error
-call(fill, 10, true)
+// call(fill, 10, true)
+
+function is<T extends unknown>(...args: T[]): boolean {
+  let assert = false;
+  args.reduce((prev, current) => {
+    assert = JSON.stringify(prev) === JSON.stringify(current);
+    return current;
+  });
+  return assert;
+}
+
+is(true, false, true);
+// Error
+// is(true, "false")
 
 export {};
