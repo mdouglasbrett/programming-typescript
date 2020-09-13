@@ -46,8 +46,20 @@ const Reserve: Reserve = (
   }
 };
 
-function call(): unknown {
-  return {};
+// Explicitly set the order of the rest array
+function call<T extends [unknown, string, ...unknown[]], R>(
+    f: (...args: T) => R,
+    ...args: T
+): R {
+  return f(...args);
 }
+
+function fill(length: number, value: string): string[] {
+    return Array.from({length}, () => value)
+}
+
+call(fill, 10, "string")
+// Error
+call(fill, 10, true)
 
 export {};
