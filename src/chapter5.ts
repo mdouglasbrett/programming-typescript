@@ -16,7 +16,7 @@ class Sneaker implements Shoe {
   purpose = 'walking';
 }
 
-type ShoeCreator = {
+type ShoeFactory = {
   create: {
     (type: 'balletFlat'): BalletFlat;
     (type: 'boot'): Boot;
@@ -24,7 +24,7 @@ type ShoeCreator = {
   };
 };
 
-let ShoeCreator: ShoeCreator = {
+let ShoeFactory: ShoeFactory = {
   create(type: 'balletFlat' | 'boot' | 'sneaker'): Shoe {
     switch (type) {
       case 'balletFlat':
